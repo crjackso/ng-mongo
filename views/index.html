@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app='ngMongo'>
+<head>
+  <meta charset="utf-8">
+  <title>ng-Mongo, from Tekpub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Le styles -->
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="/stylesheets/overrides.css" rel="stylesheet">
+  <style>
+  body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+  }
+  </style>
+  <!-- <link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet"> -->
+</head>
+
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Angular::Mongo</a>
+        </div>
+      </div>
+    </div>
+
+  <div class='container'>
+    <div ng-controller='ListController'>
+      <h1>Database List</h1>
+      <div>
+        <input type="text" placeholder='New database name' ng-model='newDatabaseName'></input>
+        <button class='btn btn-success' ng-click='addDatabase()'>Add</button>
+      </div>
+      <div>
+        <table class='table table-striped'>
+          <thead>
+            <td>Name</td>
+            <td>Details</td>
+            <td></td>
+          </thead>
+          <tr ng-repeat='db in databases'>
+            <td>{{db.name}}</td>
+            <td>{{db.details}}</td>
+            <td>
+              <button class='btn btn-danger' ng-click='removeDatabase(db)'>Remove</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="/javascripts/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/javascripts/vendor/underscore/underscore.js"></script>
+  <script src="/javascripts/vendor/angular/angular.min.js"></script>
+  <script src="/javascripts/vendor/angular-resource/angular-resource.min.js"></script>
+  <script src="/javascripts/ngMongo/app.js"></script>
+  <script src="/javascripts/ngMongo/services/mongo.js"></script>
+  <script src="/javascripts/ngMongo/controllers/ListController.js"></script>
+
+</body>
+</html>
