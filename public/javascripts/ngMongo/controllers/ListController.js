@@ -10,9 +10,15 @@
       if(!databaseName) return;
 
       var newDatabase = new Mongo.databases({name: databaseName});
-      newDatabase.$save();
+      newDatabase.$save(function(u, resp) {
+        //Success
+        $scope.databases.push(newDatabase);
+      }, function(u) {
+        //Error
+        alert("Error: could not connect to the database");
+      });
 
-      $scope.databases.push(newDatabase);
+      
       $scope.newDatabaseName = '';
     };
 
